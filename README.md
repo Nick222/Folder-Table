@@ -1,147 +1,147 @@
 # Folder Table
 
-Плагин для **Zim Desktop Wiki**, который показывает заметки, находящиеся в одной папке с текущей страницей, в виде настраиваемой таблицы.
+A plugin for **Zim Desktop Wiki** that displays notes located in the same folder as the current page as a customizable table.
 
-Автор: **Nick**
+Author: **Nick**
 
-## Возможности
+## Features
 
-Плагин показывает страницы текущей папки в виде таблицы и позволяет сортировать их по любому настроенному столбцу.
+The plugin displays pages from the current folder in a table and allows sorting by any configured column.
 
-При выборе строки страница открывается в Zim. Значения типа `url` открываются во внешнем браузере.
+Selecting a row opens the corresponding page in Zim. Values of type `url` are opened in the external browser.
 
-Настройки таблицы сохраняются между запусками Zim.
+Table settings are preserved between Zim sessions.
 
-Сохраняются состав и порядок колонок, типы данных, ширина колонок, размер и положение окна, а также последняя сортировка.
+The configured columns, their order and data types, column widths, window size and position, and the last sort order are saved.
 
-Для возврата к стандартному набору колонок есть кнопка **«Сбросить настройки»**.
+A **Reset settings** button restores the default column set.
 
-## Меню
+## Menu
 
-В меню **Инструменты** доступны:
+The **Tools** menu provides:
 
-* **Таблица папки...** — открыть таблицу;
-* **Настроить таблицу...** — настроить состав и порядок колонок.
+* **Folder table...** — open the table;
+* **Configure table...** — configure the columns and their order.
 
-## Источники данных
+## Data Sources
 
-### Карточка
+### Card
 
-Поля карточки вида `Поле: значение`.
+Fields in the form `Field: value` from the note card.
 
-Готовые поля:
+Built-in fields:
 
-`Автор`, `Название`, `Дата`, `Публикатор`, `Описание`, `Содержание`, `ISBN`, `Место`, `Запись`, `Копия`, `Источник`, `Также`, `Примечания`.
+`Author`, `Title`, `Date`, `Publisher`, `Description`, `Content`, `ISBN`, `Place`, `Record`, `Copy`, `Source`, `Also`, `Notes`.
 
-Есть вариант **«Другое поле...»** для произвольного поля карточки.
+There is also a **Other field...** option for arbitrary card fields.
 
 ### Zim
 
-* Заметка
-* Путь
-* Изменена
-* Размер
-* Символы страницы — количество символов во всей странице
+* Note
+* Path
+* Modified
+* Size
+* Page characters — number of characters in the entire page
 
-### Ссылки
+### Links
 
-* Внутренние ссылки
-* Внешние ссылки
-* Обратные ссылки
+* Internal links
+* External links
+* Backlinks
 
-### Объекты
+### Objects
 
-* Изображения
-* Таблицы
-* Объекты
+* Images
+* Tables
+* Objects
 
-### Задачи
+### Tasks
 
-* Открытые задачи
-* Запланировано
+* Open tasks
+* Scheduled
 
-### Текст
+### Text
 
-Поля этого источника относятся **только к специальному разделу второго уровня**:
+Fields from this source apply **only to the special level-2 section**:
 
 ```text
-===== Текст =====
+===== Text =====
 ```
 
-Раздел продолжается до следующего заголовка второго уровня. Более глубокие заголовки остаются частью раздела.
+The section continues until the next heading of the same level. Deeper headings remain part of the section.
 
-Доступны:
+Available fields:
 
-* Есть текст
-* Начало текста
-* Слова
-* Строки
-* Символы
-* Полный текст
+* Has text
+* Text beginning
+* Words
+* Lines
+* Characters
+* Full text
 
-`Символы страницы` и `Текст → Символы` — разные показатели: первое считает всю страницу, второе — только раздел `===== Текст =====`.
+`Page characters` and `Text → Characters` are different values: the former counts characters in the whole page, while the latter counts characters only in the `===== Text =====` section.
 
-## Типы данных
+## Data Types
 
-* `text` — текст
-* `date` — дата/время
-* `number` — число
-* `url` — URL, открываемый в браузере
-* `boolean` — логическое значение `Да / Нет`
+* `text` — text
+* `date` — date/time
+* `number` — number
+* `url` — URL opened in the browser
+* `boolean` — logical value displayed as `Yes / No`
 
-Тип влияет на сортировку.
+The data type determines how the column is sorted.
 
-## Стандартные колонки
+## Default Columns
 
-По умолчанию:
+By default:
 
-* Заметка
-* Изменена
-* Размер
-* Автор
+* Note
+* Modified
+* Size
+* Author
 
-## Хранение настроек
+## Settings Storage
 
 ```text
 ~/.config/zim/folder_table.json
 ```
 
-При заданном `XDG_CONFIG_HOME` используется соответствующий каталог.
+If `XDG_CONFIG_HOME` is set, the corresponding configuration directory is used.
 
-## Установка
+## Installation
 
-Создайте каталог:
+Create the directory:
 
 ```text
 ~/.local/share/zim/plugins/folder_table/
 ```
 
-и поместите туда файл:
+and place the plugin file there:
 
 ```text
 __init__.py
 ```
 
-После этого включите **Folder Table** в настройках плагинов Zim.
+Then enable **Folder Table** in Zim's plugin settings.
 
-## Требования
+## Requirements
 
-* Zim 0.77.x или совместимая версия
+* Zim 0.77.x or a compatible version
 * Python 3
 * GTK 3 / PyGObject
 
-Плагин использует стандартные API Zim для страниц, индекса и ParseTree.
+The plugin uses standard Zim APIs for pages, the index, and ParseTree.
 
-## Особенности
+## Notes
 
-Одна повреждённая или нестандартная страница не должна останавливать построение всей таблицы. Проблемные значения могут отображаться пустыми.
+A broken or unusual page should not stop the entire table from being built. Problematic values may simply appear empty.
 
-Для текущей открытой страницы может использоваться актуальное дерево разбора, включая несохранённые изменения. Для соседних страниц анализ выполняется отдельно по их содержимому.
+The currently open page may use its current parsed tree, including unsaved changes. Other pages are analyzed independently from their stored contents.
 
-## Сброс настроек
+## Resetting Settings
 
-Кнопка **«Сбросить настройки»** восстанавливает стандартные колонки и сбрасывает сохранённые параметры окна, ширины колонок и сортировку.
+The **Reset settings** button restores the default columns and resets the saved window parameters, column widths, and sort order.
 
-## Лицензия
+## License
 
 MIT License.
